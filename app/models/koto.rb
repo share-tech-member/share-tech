@@ -1,0 +1,2 @@
+class Koto < ApplicationRecord
+end
