@@ -3,16 +3,58 @@
   h1 {
     color: orange;
     font-family: "Times New Roman", serif;
-    margin: 0 auto;
     width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .button {
+    text-align: center;
+    margin-top: 30px;
   }
 
   .btn {
     display: inline-block;
-    width: 200px;
+    width: 100px;
     height: 100px;
-    background-color: gray;
-    margin: 30 auto;
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  .btn-k {
+    background-color: gray;    // お好きな色をどうぞ
+    margin-right: 20px;
+  }
+
+  .btn-a {
+    background-color: #ffffb2;
+    margin-left: 20px;
+  }
+
+  .text-a {
+    color: gray;
+  }
+
+  .fa-kiwi-bird {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+
+  .btn:hover {
+    opacity: 0.8;
+  }
+
+  .link {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 50px;
+  }
+
+  .link-item {
+    color: gray;
   }
 
 }
