@@ -1,13 +1,23 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<!--<h1>Homes#top</h1>-->
+<!--<p>Find me in app/views/homes/top.html.erb</p>-->
+
+<div id="homes_top">
+
+  <h1>Share Tech</h1>
+  <div class="button">
+    <%= link_to "koto", koto_homes_top_path, class:"btn btn-k" %>
+    <%= link_to aya_homes_top_path, class:"btn btn-a" do %>
+      <i class="fas fa-kiwi-bird"></i><br>
+      aya
+    <% end %>
+  </div>
 
 
-<h3>Share Tech</h3>
 
-<p><i class="fas fa-wind"></i></p>
+  <div class="link">
+    <%= link_to "コメント", homes_comment_path, class: "link-item" %><br>
+    <%= link_to "素材庫", homes_item_path, class: "link-item" %>
+  </div>
 
-<%= link_to "aya", aya_homes_top_path %>
-<%= link_to "koto", koto_homes_top_path %>
+</div>
 
-<%= link_to "コメント", homes_comment_path %>
-<%= link_to "素材庫", homes_item_path %>
