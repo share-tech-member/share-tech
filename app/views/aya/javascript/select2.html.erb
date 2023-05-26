@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <div class="row">
+    <h5 class="border-bottom p-3">JavaScript select2</h5>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <p>
+        概要：options_for_selectで製作した選択ボックスに検索機能を付加する<br>
+        手順1 $yarn add select2でselect2をインストール　→node_modulesに追加される<br>
+        手順2
+      </p>
+      <div>
+        <%= form_with url: @fruit, action: aya_javascript_select2_path, method: :post do |f| %>
+          <%= f.text_field :fruit_name %>
+          <%#= f.submit "投稿する" %>
+        <% end %>
+      </div>
+
+      <%#= form_with url: @fruit, action: aya_javascript_create_path do |f| %>
+        <%#= f.select :furuit_id, options_from_collection_for_select(Fruit.all, :id), { include_blank: true }, class:"select_search"%>
+      <%# end %>
+
+
+      <%= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"mt-3 btn btn-sm btn-outline-secondary" %>
+
+    </div>
+  </div>
+
+</div>

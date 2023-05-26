@@ -11,6 +11,9 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import "select2"  // aya
+import "./a-select2.js"  // aya
+
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
