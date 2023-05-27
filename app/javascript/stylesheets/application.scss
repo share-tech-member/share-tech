@@ -1,8 +1,9 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-@import "./homes/top";
+@import "select2/dist/css/select2.min.css";
 
+@import "./homes/top";
 
 * {
   margin: 0;
