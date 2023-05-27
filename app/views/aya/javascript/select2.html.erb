@@ -3,27 +3,46 @@
     <h5 class="border-bottom p-3">JavaScript select2</h5>
   </div>
   <div class="row mt-3">
-    <div class="col-md-12">
-      <p>
-        概要：options_for_selectで製作した選択ボックスに検索機能を付加する<br>
-        手順1 $yarn add select2でselect2をインストール　→node_modulesに追加される<br>
-        手順2
-      </p>
+    <p>
+      概要：選択ボックスに検索機能を付加するjQueryプラグイン<br>
+      使用ファイル：
+      app/javascript/packs/application.js<br>
+      app/javascript/packs/a-select2.js<br>
+      app/javascript/stylesheets/application.scss<br>
+      select2.html.erb<br>
+      javascript_controller.rb<br>
+    </p>
+    <p class="mt-2">
+      手順1 $yarn add select2でselect2をインストール→node_modulesに追加されているのを確認<br>
+      手順2 application.js で、インストールしたselect2とJS記述を書いたファイル(a-select2.js)をimportする<br>
+      手順3 Fruitモデルを作成し、select2アクションとcreateアクションを用いて投稿フォームと選択フォームを実装する<br>
+      手順4 @import "select2/dist/css/select2.min.css;" CSSをimportする
+    </p>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-2">
       <div>
-        <%= form_with url: @fruit, action: aya_javascript_select2_path, method: :post do |f| %>
-          <%= f.text_field :fruit_name %>
+        登録項目
+        <%= form_with model: @fruit, url: aya_javascript_select2_path, method: :post do |f| %>
+          <%#= f.text_field :fruit_name %>
           <%#= f.submit "投稿する" %>
         <% end %>
       </div>
 
-      <%#= form_with url: @fruit, action: aya_javascript_create_path do |f| %>
-        <%#= f.select :furuit_id, options_from_collection_for_select(Fruit.all, :id), { include_blank: true }, class:"select_search"%>
-      <%# end %>
+      <% @fruits.each do |fruit| %>
+        <div><%= fruit.fruit_name %></div>
+      <% end %>
+    </div>
 
-
-      <%= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"mt-3 btn btn-sm btn-outline-secondary" %>
-
+    <div class="col-md-6">
+      select2の完成見本
+      <%= form_with model: @fruit, url: aya_javascript_select2_path, method: :post do |f| %>
+        <%= f.select :fruit_name, options_from_collection_for_select(Fruit.all, :id, :fruit_name), { include_blank: true }, class: "select_search", style:"width: 200px;" %>
+      <% end %>
     </div>
   </div>
 
+<div class="row mt-4">
+  <%= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"mt-3 btn btn-sm btn-outline-secondary" %>
+</div>
 </div>

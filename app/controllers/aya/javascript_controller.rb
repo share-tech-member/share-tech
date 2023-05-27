@@ -4,14 +4,16 @@ class Aya::JavascriptController < ApplicationController
   end
 
   def select2
+    @fruit = Fruit.new
     @fruits = Fruit.all
-
   end
 
   def create  # select2
     @fruit = Fruit.new(fruit_params)
     if @fruit.save
       redirect_to aya_javascript_select2_path
+    else
+      render :select2
     end
   end
 
