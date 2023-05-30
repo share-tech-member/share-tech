@@ -1,0 +1,2 @@
+module Koto::MovesHelper
+end
