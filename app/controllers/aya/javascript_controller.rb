@@ -18,6 +18,7 @@ class Aya::JavascriptController < ApplicationController
   end
 
   def jscroll
+    @fruits = Fruit.all.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   private

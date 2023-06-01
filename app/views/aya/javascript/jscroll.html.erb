@@ -5,13 +5,45 @@
   <div class="row mt-3">
     <p>
       概要：コンテンツをページネーションさせるところを無限スクロールにするjQueryプラグイン<br>
-      仕様ファイル：<br>
+      使用ファイル：<br>
+      app/javascript/packs/application.js<br>
+      app/javascript/packs/a-jscroll.js<br>
     </p>
-    
-    
-    
-    
-  <div class="row mt-4">
-    <%= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"mt-3 btn btn-sm btn-outline-secondary" %>
   </div>
+  <p class="mt-2 border p-3">
+    手順1 Gemfile▸<br>
+    gem 'kaminari'<br>
+    →$bundle install<br>
+  </p>
+  <p class="mt-2 border p-3">
+    手順2 application.js▸<br>
+    import "./a-jscroll.js"<br>
+  </p>
+
+
+
+  <div class="row mt-4 top-page">
+    <div class="col-md-3">
+      <div>
+        登録項目
+        <%= form_with model: @fruit, url: aya_javascript_select2_path, method: :post do |f| %>
+          <%= f.text_field :fruit_name %>
+          <%= f.submit "投稿する", class:"mt-2" %>
+        <% end %>
+      </div>
+      <div class="scroll-list jscroll">
+        <% @fruits.first(5).each_with_index do |fruit, index| %>
+          <div class="fruit-item"><%= fruit.fruit_name %></div>
+        <% end %>
+        <div style="display: none;">
+          <%= paginate @fruits %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--<div class="row mt-4">-->
+  <!--  <%#= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"my-3 btn btn-sm btn-outline-secondary" %>-->
+  <!--</div>-->
 </div>
