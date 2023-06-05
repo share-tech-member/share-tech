@@ -3,7 +3,7 @@
     <h5 class="border-bottom p-3">JavaScript select2</h5>
   </div>
 
-  <div class="row mt-4">
+  <div class="row">
     <%= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"my-3 btn btn-sm btn-outline-secondary" %>
   </div>
 
@@ -19,14 +19,17 @@
     </p>
   </div>
   <p class="mt-2 border p-3">
-    手順1 ページネーション機能kaminariをインストール<br>
-    Gemfile▸<br>
-    gem 'kaminari'<br>
-    $bundle install<br>
+    手順1 kaminariをインストールしてページネーション機能実装<br>
+    Gemfile▸
+    gem 'kaminari' → $bundle install<br>
+    javascript_controller.rb▸
+    @fruits.all.order(created_at: :desc).page(params[:page]).per(3)<br>
+    jscroll.html.erb▸
+    paginateを記述する<br>
   </p>
   <p class="mt-2 border p-3">
-    手順2 jscroll用の記述を書いたJSファイルをインポート
-    application.js▸<br>
+    手順2 jscroll用の記述を書いたJSファイルをインポート<br>
+    application.js▸
     import "./a-jscroll.js"<br>
   </p>
   <p class="mt-2 border p-3">
@@ -45,6 +48,8 @@
     src="js/jquery.jscroll.min.js" type="text/javascript"<br>
     これにscriptタグをつける<br>
   </p>
+  <p class="mt-2 border p-3">
+    手順3 手順1で記述したpaginateを style="display: none;" で隠す
 
 
 
