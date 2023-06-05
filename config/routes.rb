@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'javascript/select2'
     post 'javascript/select2' => 'javascript#create'
     get 'javascript/jscroll'
+    get 'rspec/show'
   end
 
 

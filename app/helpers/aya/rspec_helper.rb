@@ -1,0 +1,2 @@
+module Aya::RspecHelper
+end
