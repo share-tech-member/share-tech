@@ -2,39 +2,69 @@
   <div class="row">
     <h5 class="border-bottom p-3">JavaScript select2</h5>
   </div>
+
+  <div class="row">
+    <%= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"my-3 btn btn-sm btn-outline-secondary" %>
+  </div>
+
   <div class="row mt-3">
     <p>
       概要：コンテンツをページネーションさせるところを無限スクロールにするjQueryプラグイン<br>
       使用ファイル：<br>
+      jscroll.html.erb(当ページ)<br>
       app/javascript/packs/application.js<br>
       app/javascript/packs/a-jscroll.js<br>
+      app/views/lauouts/application.html.erb<br>
+      javascript_controller.rb<br>
     </p>
   </div>
   <p class="mt-2 border p-3">
-    手順1 Gemfile▸<br>
-    gem 'kaminari'<br>
-    →$bundle install<br>
+    手順1 kaminariをインストールしてページネーション機能実装<br>
+    Gemfile▸
+    gem 'kaminari' → $bundle install<br>
+    javascript_controller.rb▸
+    @fruits.all.order(created_at: :desc).page(params[:page]).per(3)<br>
+    jscroll.html.erb▸
+    paginateを記述する<br>
   </p>
   <p class="mt-2 border p-3">
-    手順2 application.js▸<br>
+    手順2 jscroll用の記述を書いたJSファイルをインポート<br>
+    application.js▸
     import "./a-jscroll.js"<br>
   </p>
+  <p class="mt-2 border p-3">
+    手順2 jscroll用のプラグインを読み込む<br>
+    app/views/lauouts/application.html.erb▸<br>
+    src="//cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"
+    これにscriptタグをつける<br>
+    ＊文字列として表示させるためあえて外しています、application.html.erb参照を推奨します<br>
+    ＊srcで指定しているURLの文頭にhttps:をつけていないのは可用性を高めるため。https:でもhttp:でも使えるように外しています<br>
+  </p>
+  <p class="mt-2 border p-3">
+    手順2の補足：今回はURLを用いて読み込んでいるが、下記の手順でzipファイルをダウンロードして使用することもできる<br>
+    https://github.com/pklauzinski/jscrollからjscrollにアクセス<br>
+    <span class="btn btn-sm btn-success">Code</span>をクリック → Download ZIP<br>
+    ダウンロードしたファイルをapp/javascript/packs配下にドラッグアンドドロップし、<br>
+    src="js/jquery.jscroll.min.js" type="text/javascript"<br>
+    これにscriptタグをつける<br>
+  </p>
+  <p class="mt-2 border p-3">
+    手順3 手順1で記述したpaginateを style="display: none;" で隠す
 
 
 
   <div class="row mt-4 top-page">
-    <div class="col-md-3">
-      <div>
-        登録項目
-        <%= form_with model: @fruit, url: aya_javascript_select2_path, method: :post do |f| %>
-          <%= f.text_field :fruit_name %>
-          <%= f.submit "投稿する", class:"mt-2" %>
-        <% end %>
-      </div>
+    <div class="col-md-10">
+      実装イメージ
+      (3件ごとにページネーションを設定しています)
       <div class="scroll-list jscroll">
-        <% @fruits.first(5).each_with_index do |fruit, index| %>
-          <div class="fruit-item"><%= fruit.fruit_name %></div>
-        <% end %>
+        <ul style="list-style: none;">
+          <% @fruits.first(20).each_with_index do |fruit, index| %>
+            <li>
+              <div><%= fruit.fruit_name %></div>
+            <li>
+          <% end %>
+        </ul>
         <div style="display: none;">
           <%= paginate @fruits %>
         </div>
@@ -42,8 +72,4 @@
     </div>
 
   </div>
-
-  <!--<div class="row mt-4">-->
-  <!--  <%#= link_to "JavaScriptに戻る", aya_javascript_index_path, class:"my-3 btn btn-sm btn-outline-secondary" %>-->
-  <!--</div>-->
 </div>
