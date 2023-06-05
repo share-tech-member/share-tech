@@ -3,11 +3,13 @@
     <h5 class="border-bottom p-3">aya カテゴリ一覧</h5>
   </div>
   <div class="row mt-3">
-    <%= link_to "JavaScript", aya_javascript_index_path, class:"text-warning" %>
-    <%#= link_to "JavaScript", aya_java_index_path %>　　<!--後々追加-->
+    <ul style="list-style: none;">
+      <li><%= link_to "JavaScript", aya_javascript_index_path, class:"text-warning" %></li>
+      <li><%= link_to "RSpec", aya_rspec_show_path, class:"text-primary" %></li>
+      ＊順次追加予定です
 
 
-
+    </ul>
   </div>
 
 
